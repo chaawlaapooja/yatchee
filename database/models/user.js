@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     name : {type:String, required:true},
@@ -11,14 +11,14 @@ const userSchema = new mongoose.Schema({
 	boatBrand : {type:String, default:null}
 })
 
-// userSchema.pre('save', function(next){
-// 	const user=this
+userSchema.pre('save', function(next){
+	const user=this
   
-// 	bcrypt.hash(user.password,10,function(error,encrypted){
-// 		user.password=encrypted
-// 		next()
-// 	})
-// })
+	bcrypt.hash(user.password,10,function(error,encrypted){
+		user.password=encrypted
+		next()
+	})
+})
 // userSchema.post('save', function(error, doc, next) {
 //     if (error.name === 'MongoError' && error.code === 11000) {
 //       next(new Error('phone/username must be unique'));
