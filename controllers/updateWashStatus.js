@@ -1,4 +1,3 @@
-const { ObjectID } = require('bson')
 const wash = require('../database/models/wash')
 
 module.exports = (req, res) => {

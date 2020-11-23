@@ -1,4 +1,3 @@
-const { ObjectID } = require('bson')
 const vendor = require('../database/models/vendor')
 
 module.exports = (req, res) => {

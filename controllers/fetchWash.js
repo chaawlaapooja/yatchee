@@ -1,6 +1,4 @@
 const { ObjectId } = require('bson')
-const user = require('../database/models/user')
-const vendor = require('../database/models/vendor')
 const wash = require('../database/models/wash')
 
 module.exports = (req, res) => {
