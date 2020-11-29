@@ -16,10 +16,10 @@ module.exports = (req, res) => {
                 else{
                     vendor.updateOne({_id:vendorId},{$push:{
                         feedbacks:result._id
-                    }},(err,res)=>{
+                    }},(err,success)=>{
                         if(err)
                             return res.status(400).json('error occorred while saving feedback for vendor')
-                        else
+                        else if(success.nModified===1)
                             return res.status(200).json('Feedback submited successfully')
                     })
                     

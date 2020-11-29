@@ -3,11 +3,15 @@ const bcrypt = require('bcrypt');
 const { ObjectId } = require('bson');
 
 const vendorSchema = new mongoose.Schema({
-    name : {type:String, required:true},
+    firstName : {type:String, required:true},
+    lastName : {type:String, required:true},
     phone : {type:Number, required:[true, 'Phone needs to be unique'], unique:true},
     username : {type:String, required:[true, 'Please provide your username'], unique:true},
-	password : {type : String, required: true},
+    password : {type : String, required: true},
+    vendorType : {type:String, required:true},
     profilePicture : {type:String, default:null},
+    photoProof: {type:String, default:null},
+    insuranceProof: {type:String, default:null},
     feedbacks : [{type: ObjectId, ref:'feedback'}],
     location: {
         type: {

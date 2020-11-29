@@ -11,6 +11,7 @@ const washSchema = new mongoose.Schema({
     subtotal : {type:Number, required:true},
     checkupCost : {type:Number, required:true},
     vendorInfo : {type:mongoose.Schema.Types.ObjectId, ref:'vendor', default:null},
+    messageFromVendor:{type:String, default:null},
     requestedAt : {type:Number, default: new Date()},
     location: {
         type: {

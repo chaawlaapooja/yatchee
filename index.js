@@ -8,6 +8,7 @@ const cors = require('cors')
 
 const signupUser = require('./controllers/signupUser');
 const updateBoatInfo = require('./controllers/updateBoatInfo');
+const verifyVendor = require('./controllers/verifyVendor');
 const loginUser = require('./controllers/loginUser');
 const addWashTypeOrService = require('./controllers/addWashTypeOrService');
 const updateWashTypeOrService = require('./controllers/updateWashTypeOrService');
@@ -24,6 +25,9 @@ const changePassword = require('./controllers/changePassword');
 const checkIfUserExist = require('./controllers/checkIfUserExist');
 const submitFeedback = require('./controllers/submitFeedback');
 const getCheckupCost = require('./controllers/getCheckupCost');
+const changeProfilePicture = require('./controllers/changeProfilePicture');
+const fetchVendorProfile = require('./controllers/fetchVendorProfile');
+const forgotPassword = require('./controllers/forgotPassword');
 
 const app = new express();
 
@@ -60,6 +64,7 @@ app.post('/fetchWash', fetchWash);
 app.get('/getCheckupCost', getCheckupCost);
 app.post('/changeName', changeName);
 app.post('/changePassword', changePassword);
+app.post('/forgotPassword', forgotPassword);
 app.post('/checkIfUserExist', checkIfUserExist)
 app.post('/submitFeedback', submitFeedback);
 
@@ -72,6 +77,9 @@ app.post('/updateCheckupCost', updateCheckupCost)
 app.post('/acceptJob', acceptJob)
 app.post('/updateLocation', updateLocation)
 app.post('/updateWashStatus', updateWashStatus);
+app.post('/verifyVendor', verifyVendor)
+app.post('/changeProfilePicture', changeProfilePicture);
+app.post('/fetchVendorProfile', fetchVendorProfile)
 
 app.listen(process.env.PORT || 3001, () => {
     console.log(`App listening on port ${process.env.PORT}`);

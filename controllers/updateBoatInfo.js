@@ -8,8 +8,11 @@ module.exports = (req, res) => {
         }}, (error, result)=>{
                 if(error)
                     return res.status(400).json(error)
-                else{
-                    return res.status(200).json('Boat info updated successfully')
+                else {
+                    if(result.nModified===1)
+                        return res.status(200).json('boat info updated successfully')
+                    else    
+                        return res.status(200).json('no changes done')
                 }
         }
     )

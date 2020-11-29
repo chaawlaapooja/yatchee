@@ -10,7 +10,7 @@ module.exports = (req, res) => {
         }}, (error, result)=>{
                 if(error)
                     return res.status(400).json(error)
-                else{
+                else if(result.nModified===1){
                     return res.status(200).json('Wash accepted by Vendor successfully')
                 }
         }
