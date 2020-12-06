@@ -12,7 +12,7 @@ module.exports = (req, res) => {
         updatedValue = {
             status: 'completed'
         }
-    wash.updateOne({_id:_id},{$set : {updatedValue, messageFromVendor}}, (error, result)=>{
+    wash.updateOne({_id:_id},{$set : {status:updatedValue, messageFromVendor}}, (error, result)=>{
                 if(error)
                     return res.status(400).json(error)
                 else if(result.nModified===1){
