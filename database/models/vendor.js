@@ -8,10 +8,11 @@ const vendorSchema = new mongoose.Schema({
     phone : {type:Number, required:[true, 'Phone needs to be unique'], unique:true},
     username : {type:String, required:[true, 'Please provide your username'], unique:true},
     password : {type : String, required: true},
-    vendorType : {type:String, required:true},
     profilePicture : {type:String, default:null},
     photoProof: {type:String, default:null},
     insuranceProof: {type:String, default:null},
+    washTypesProvided:{type:Array, required:true},
+    servicesProvided:{type:Array, required:true},
     feedbacks : [{type: ObjectId, ref:'feedback'}],
     location: {
         type: {
