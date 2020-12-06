@@ -13,6 +13,7 @@ const washSchema = new mongoose.Schema({
     vendorInfo : {type:mongoose.Schema.Types.ObjectId, ref:'vendor', default:null},
     messageFromVendor:{type:String, default:null},
     requestedAt : {type:Number, default: new Date()},
+    transactionID : {type:String, required:true},
     location: {
         type: {
           type: String, // Don't do `{ location: { type: String } }`
