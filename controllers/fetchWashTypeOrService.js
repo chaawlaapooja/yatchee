@@ -1,6 +1,5 @@
 const washType = require('../database/models/washType')
 const service = require('../database/models/service')
-const vendorType = require('../database/models/vendorType')
 
 module.exports = (req, res) => {
     const {requestedType} = req.params
