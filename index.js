@@ -31,7 +31,7 @@ const forgotPassword = require('./controllers/forgotPassword');
 
 const app = new express();
 
-
+//process.env.DB_URI
 //mongoose.connect('mongodb://localhost/testdb', { useNewUrlParser: true });
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }, function(error){
     if(error) console.log(error);
@@ -40,10 +40,10 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }, function(error){
 
 
 const mongoStore = connectMongo(expressSession);
-
+// process.env.EXPRESS_SESSION_KEY
 app.use(
   expressSession({
-    secret: process.env.EXPRESS_SESSION_KEY,
+    secret:process.env.EXPRESS_SESSION_KEY,
     store: new mongoStore({
       mongooseConnection: mongoose.connection
     })

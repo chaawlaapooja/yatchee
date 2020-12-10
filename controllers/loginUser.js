@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt')
 const user = require('../database/models/user')
 const vendor = require('../database/models/vendor')
+const admin = require('../database/models/admin');
 
 module.exports = (req, res) => {
-    const { phone, password, designation } = req.body;
+    const { phone, email, password, designation } = req.body;
     if(designation==='user')
         user.findOne({ phone }, (error, userInfo) => {
             if (userInfo) {
@@ -26,6 +27,18 @@ module.exports = (req, res) => {
                 });
             } else {
                 return res.status(400).json('Vendor not found')
+            }
+        })
+    else if(designation==='admin')
+        admin.findOne({ email }, (error, adminInfo) => {
+            if (adminInfo) {
+                bcrypt.compare(password, adminInfo.password, function(err, result) {
+                    if(!result)
+                        return res.status(400).json('Wrong password')
+                    return res.status(200).json(adminInfo)
+                });
+            } else {
+                return res.status(400).json('Admin not found')
             }
         })
 }
