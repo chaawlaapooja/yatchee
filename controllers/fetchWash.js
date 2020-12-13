@@ -2,15 +2,19 @@ const { ObjectId } = require('bson')
 const wash = require('../database/models/wash')
 
 module.exports = (req, res) => {
-    const {userId, vendorId, status, forWhom} = req.body
+    const {userId, vendorId, status, washTypesProvided, forWhom} = req.body
     let projection = {}
     if(forWhom==='user')
         projection={userInfo:ObjectId(userId), status}
     else if(forWhom==='vendor'){
-        if(vendorId)
+        if(status!=='pending')
             projection={vendorInfo:ObjectId(vendorId), status}
-        else
-            projection={status}
+        else{
+            projection={washType:{"$in":washTypesProvided}}
+        }
+    }
+    else if(forWhom==='admin'){
+        projection={}
     }
     wash.find(projection, (error, result) => {
             if(error){

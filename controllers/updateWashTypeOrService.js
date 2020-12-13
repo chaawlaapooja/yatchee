@@ -11,7 +11,7 @@ module.exports = (req, res) => {
                     if(error)
                         return res.status(400).json(error)
                     else if(result.nModified===1){
-                        return res.status(200).json('WashType/Service info updated successfully')
+                        return res.status(200).json('success')
                     }
             }
         )
@@ -23,7 +23,7 @@ module.exports = (req, res) => {
                     if(error)
                         return res.status(400).json(error)
                     else if(result.nModified===1){
-                        return res.status(200).json('Service info updated successfully')
+                        return res.status(200).json('success')
                     }
             }
         )

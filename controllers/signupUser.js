@@ -21,10 +21,9 @@ module.exports = (req, res) => {
   } else if(designation==='admin'){
     admin.create({email, password}, (error, result) => {
       if(error){
-          return res.status(400).json(error)
+          return res.status(400).json('error')
       }
       return res.status(200).json(result)
     })
   }
-  
 }

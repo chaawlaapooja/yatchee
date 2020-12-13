@@ -1,5 +1,6 @@
 const washType = require('../database/models/washType')
 const service = require('../database/models/service')
+const admin = require('../database/models/admin');
 
 module.exports = (req, res) => {
     const {_id, remove} = req.body
@@ -13,6 +14,13 @@ module.exports = (req, res) => {
     } else if(remove==='service'){
         service.deleteOne({_id:_id}, (error) => {
             if(error) 
+                return res.status(400).json('error')
+            else
+                return res.status(200).json('success')
+        })
+    } else if(remove==='admin'){
+        admin.deleteOne({_id}, (error) => {
+            if(error)
                 return res.status(400).json('error')
             else
                 return res.status(200).json('success')

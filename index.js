@@ -13,6 +13,7 @@ const loginUser = require('./controllers/loginUser');
 const addWashTypeOrService = require('./controllers/addWashTypeOrService');
 const updateWashTypeOrService = require('./controllers/updateWashTypeOrService');
 const removeWashTypeOrService = require('./controllers/removeWashTypeOrService');
+const fetchUsers = require('./controllers/fetchUsers');
 const fetchWashTypeOrService = require('./controllers/fetchWashTypeOrService');
 const addWash = require('./controllers/addWash');
 const fetchWash = require('./controllers/fetchWash');
@@ -73,6 +74,7 @@ app.post('/addWashTypeOrService', addWashTypeOrService);
 app.post('/updateWashTypeOrService', updateWashTypeOrService);
 app.post('/removeWashTypeOrService', removeWashTypeOrService);
 app.post('/updateCheckupCost', updateCheckupCost)
+app.get('/fetch/users/:requestedUser', fetchUsers)
 
 app.post('/acceptJob', acceptJob)
 app.post('/updateLocation', updateLocation)

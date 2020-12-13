@@ -10,7 +10,7 @@ module.exports = (req, res) => {
                     return res.status(400).json(error)
                 else {
                     if(result.nModified===1)
-                        return res.status(200).json('Checkup cost updated successfully')
+                        return res.status(200).json('success')
                     else 
                         return res.status(200).json('no changes done')
                 }
