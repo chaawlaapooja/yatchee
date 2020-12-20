@@ -9,9 +9,8 @@ module.exports = (req, res) => {
     else if(forWhom==='vendor'){
         if(status!=='pending')
             projection={vendorInfo:ObjectId(vendorId), status}
-        else{
-            projection={washType:{"$in":washTypesProvided}}
-        }
+        else
+            projection={washType:{"$in":washTypesProvided}, status}
     }
     else if(forWhom==='admin'){
         projection={}
