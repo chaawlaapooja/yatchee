@@ -29,6 +29,8 @@ const getCheckupCost = require('./controllers/getCheckupCost');
 const changeProfilePicture = require('./controllers/changeProfilePicture');
 const fetchVendorProfile = require('./controllers/fetchVendorProfile');
 const forgotPassword = require('./controllers/forgotPassword');
+const cancelWash = require('./controllers/cancelWash');
+const makePayment = require('./controllers/makePayment');
 
 const app = new express();
 
@@ -68,13 +70,14 @@ app.post('/changePassword', changePassword);
 app.post('/forgotPassword', forgotPassword);
 app.post('/checkIfUserExist', checkIfUserExist)
 app.post('/submitFeedback', submitFeedback);
-
+app.post('/cancelWash', cancelWash)
 
 app.post('/addWashTypeOrService', addWashTypeOrService);
 app.post('/updateWashTypeOrService', updateWashTypeOrService);
 app.post('/removeWashTypeOrService', removeWashTypeOrService);
 app.post('/updateCheckupCost', updateCheckupCost)
 app.get('/fetch/users/:requestedUser', fetchUsers)
+app.post('/makePayment', makePayment)
 
 app.post('/acceptJob', acceptJob)
 app.post('/updateLocation', updateLocation)

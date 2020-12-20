@@ -23,7 +23,10 @@ const washSchema = new mongoose.Schema({
           type: [Number],
           required:true
         }
-    }
+    },
+    isCancelled : {type:Boolean, default:false},
+    isVendorPaid : {type:Boolean, default:false},
+    paidOn : {type:Date, default:null}
 })
 
 const wash = mongoose.model('wash', washSchema)
