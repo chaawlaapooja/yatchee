@@ -1,5 +1,7 @@
 const { ObjectID } = require('bson')
+const user = require('../database/models/user')
 const wash = require('../database/models/wash')
+const triggerNotification = require('./sendNotification')
 
 module.exports = (req, res) => {
     const {_id, vendorId} = req.body
@@ -15,4 +17,13 @@ module.exports = (req, res) => {
                 }
         }
     )
+    wash.findOne({_id},(error, result) => {
+        if (result) {
+            let userId = result.userInfo;
+            user.findOne({_id:userId},(err,userData)=> {
+                const {androidPlayerID, iosPlayerID} = userData
+                triggerNotification('Your job was accepted!', [androidPlayerID, iosPlayerID])
+            })
+        }
+    })
 }

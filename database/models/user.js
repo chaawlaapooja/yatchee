@@ -8,7 +8,9 @@ const userSchema = new mongoose.Schema({
 	password : {type : String, required: true},
 	boatLength : {type:Number, default:null},
 	boatBreadth : {type:Number, default:null},
-	boatBrand : {type:String, default:null}
+	boatBrand : {type:String, default:null},
+	androidPlayerID: {type:String, default:null,unique:true},
+	iosPlayerID: {type:String, default:null,unique:true},
 })
 
 userSchema.pre('save', function(next){

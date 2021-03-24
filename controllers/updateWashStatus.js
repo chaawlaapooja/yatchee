@@ -1,4 +1,6 @@
 const wash = require('../database/models/wash')
+const user = require('../database/models/user')
+const triggerNotification = require('./sendNotification')
 
 module.exports = (req, res) => {
     const {_id, operation, messageFromVendor} = req.body
@@ -10,7 +12,7 @@ module.exports = (req, res) => {
                 return res.status(200).json('Wash status updated successfully')
             }
         })
-    else if(operation==='completed')
+    else if(operation==='completed'){
         wash.updateOne({_id:_id},{$set : {status:'completed', messageFromVendor}}, (error, result)=>{
                     if(error)
                         return res.status(400).json(error)
@@ -18,4 +20,16 @@ module.exports = (req, res) => {
                         return res.status(200).json('Wash status updated successfully')
                     }
         })
+        wash.findOne({_id},(error, result) => {
+            if (result) {
+                let userId = result.userInfo;
+                user.findOne({_id:userId},(err,userData)=> {
+                    const {androidPlayerID, iosPlayerID} = userData
+                    console.log(androidPlayerID, iosPlayerID)
+
+                    triggerNotification('Your job was completed!', [androidPlayerID, iosPlayerID])
+                })
+            }
+        })
+    }
 }

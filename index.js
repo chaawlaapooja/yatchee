@@ -6,6 +6,7 @@ const connectMongo = require("connect-mongo");
 const expressSession = require("express-session");
 const cors = require('cors')
 
+const updatePlayerId = require('./controllers/updatePlayerId')
 const signupUser = require('./controllers/signupUser');
 const updateBoatInfo = require('./controllers/updateBoatInfo');
 const verifyVendor = require('./controllers/verifyVendor');
@@ -36,6 +37,7 @@ const app = new express();
 
 //process.env.DB_URI
 //mongoose.connect('mongodb://localhost/testdb', { useNewUrlParser: true });
+
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }, function(error){
     if(error) console.log(error);
       console.log("connection successful");
@@ -46,7 +48,7 @@ const mongoStore = connectMongo(expressSession);
 // process.env.EXPRESS_SESSION_KEY
 app.use(
   expressSession({
-    secret:process.env.EXPRESS_SESSION_KEY,
+    secret:'secret', //process.env.EXPRESS_SESSION_KEY,
     store: new mongoStore({
       mongooseConnection: mongoose.connection
     })
@@ -57,7 +59,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
-
+app.post('/updatePlayerId', updatePlayerId);
 app.post('/signup', signupUser);
 app.post('/updateBoatInfo', updateBoatInfo);
 app.post('/login', loginUser)
