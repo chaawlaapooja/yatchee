@@ -31,7 +31,7 @@ var sendNotification = function(data) {
 
 module.exports = (heading,playerID) => {
     const message = { 
-        app_id: "7006366b-1230-47b4-bac6-db560d647773",
+        app_id: "8deb85de-b63f-4015-9bd1-7a30bd2e6fe9",
         contents: {"en": "Congratulations"},
         headings: {"en": heading},
         include_player_ids: playerID
