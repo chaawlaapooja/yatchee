@@ -25,9 +25,8 @@ module.exports = (req, res) => {
                 let userId = result.userInfo;
                 user.findOne({_id:userId},(err,userData)=> {
                     const {androidPlayerID, iosPlayerID} = userData
-                    console.log(androidPlayerID, iosPlayerID)
-
-                    triggerNotification('Your job was completed!', [androidPlayerID, iosPlayerID])
+                    const playerId = androidPlayerID? androidPlayerID: iosPlayerID
+                    triggerNotification('Your job was completed!', [playerId])
                 })
             }
         })
