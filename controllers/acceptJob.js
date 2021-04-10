@@ -25,7 +25,7 @@ module.exports = (req, res) => {
                 const {androidPlayerID, iosPlayerID} = userData
                 const playerId = androidPlayerID? androidPlayerID: iosPlayerID
                 vendor.findOne({_id:vendorId}, (e,vendorData)=> {
-                    triggerNotification(`Your job was completed by ${vendorData.firstName} ${vendorData.lastName}!`, [playerId], vendorData.profilePicture)
+                    triggerNotification(`Your job was accepted by ${vendorData.firstName} ${vendorData.lastName}!`, [playerId], vendorData.profilePicture)
                 })
             })
         }
