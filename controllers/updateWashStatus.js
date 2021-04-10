@@ -23,10 +23,11 @@ module.exports = (req, res) => {
         wash.findOne({_id},(error, result) => {
             if (result) {
                 let userId = result.userInfo;
+                const vendorInfo = result.vendorInfo;
                 user.findOne({_id:userId},(err,userData)=> {
                     const {androidPlayerID, iosPlayerID} = userData
                     const playerId = androidPlayerID? androidPlayerID: iosPlayerID
-                    triggerNotification('Your job was completed!', [playerId])
+                    triggerNotification('Your job was completed!', [playerId], {big_picture : vendorInfo.profilePicture},  {ios_attachments: {imageUrl:vendorInfo.profilePicture}})
                 })
             }
         })
