@@ -35,8 +35,8 @@ module.exports = (heading,playerID,profilePicture) => {
         contents: {"en": "Congratulations"},
         headings: {"en": heading},
         include_player_ids: playerID,
-        big_picture : profilePicture,
-        ios_attachments: {imageUrl: profilePicture}
+        // big_picture : profilePicture,
+        // ios_attachments: {imageUrl: profilePicture}
     };
     sendNotification(message)
 }
