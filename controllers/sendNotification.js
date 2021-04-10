@@ -34,9 +34,9 @@ module.exports = (heading,playerID,profilePicture) => {
         app_id: "8deb85de-b63f-4015-9bd1-7a30bd2e6fe9",
         contents: {"en": "Congratulations"},
         headings: {"en": heading},
+        big_picture : profilePicture,
+        ios_attachments: {id1: profilePicture},
         include_player_ids: playerID,
-        // big_picture : profilePicture,
-        // ios_attachments: {imageUrl: profilePicture}
     };
     sendNotification(message)
 }
