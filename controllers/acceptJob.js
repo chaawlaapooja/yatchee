@@ -24,7 +24,7 @@ module.exports = (req, res) => {
             user.findOne({_id:userId},(err,userData)=> {
                 const {androidPlayerID, iosPlayerID} = userData
                 const playerId = androidPlayerID? androidPlayerID: iosPlayerID
-                triggerNotification('Your job was accepted!', [playerId], {big_picture : vendorInfo.profilePicture},  {ios_attachments: {imageUrl:vendorInfo.profilePicture}})
+                triggerNotification(`Your job was completed by ${vendorInfo.firstName} ${vendorInfo.lastName}!`, [playerId], vendorInfo.profilePicture)
             })
         }
     })
